@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
+import style from './TransactionHistory.module.css';
 
 export default function TransactionHistory ({ items }) {
     return (
-        <table className="transaction-history">
+        <table className={style.transactionHistory}>
             <thead>
                 <tr>
                     <th>Type</th>
@@ -18,19 +19,19 @@ export default function TransactionHistory ({ items }) {
                         <td>{amount}</td>
                         <td>{currency}</td>
                     </tr>
-                ))};
+                ))}
             </tbody>
         </table>
     );
 };
 
-TransactionHistory.propTypes = {
+TransactionHistory.propType = {
     items: PropTypes.arrayOf(
-        PropTypes.ex({
-            type: PropTypes.string.isRequired,
-            amount: PropTypes.string.isRequired,
-            currency: PropTypes.string.isRequired,
-            id: PropTypes.string.isRequired,
-        }).isRequired,
+        PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        type: PropTypes.string.isRequired,
+        amount: PropTypes.number.isRequired,
+        currency: PropTypes.number.isRequired,
+        }).isRequired
     ).isRequired,
 };
